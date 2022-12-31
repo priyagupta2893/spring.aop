@@ -7,19 +7,25 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * This class explains Before aspect
+ * 
+ * @author PRIYA GUPTA
+ */
 //AOP related configuration
 @Aspect // combo of point cut and advice
 @Configuration
-public class UseAccessAspect {
-	private Logger log = LoggerFactory.getLogger(UseAccessAspect.class);
+public class BeforeAspect {
+	private Logger log = LoggerFactory.getLogger(BeforeAspect.class);
 
 	/**
 	 * syntax for @Before for every class and every method in it irrespective of
-	 * arguments in methods execution(* PACKAGE.*.*(..))
-	 * framework that provides point cuts etc is weaver and process ia weaving
+	 * arguments in methods execution(* PACKAGE.*.*(..)) framework that provides
+	 * point cuts etc is weaver and process ia weaving
+	 * 
 	 * @param jp
 	 */
-	@Before("execution(* com.cdp.springAop.spring.aop.service.*.*(..))")
+	@Before("com.cdp.springAop.spring.aop.aspect.CommonPointCutConfig.serviceLayerPointCutConfig()")
 	public void before(JoinPoint jp) { // this is point cut
 		// this is advice what to do after point cut
 		log.info("Check if user has access"); // logic below
@@ -42,7 +48,7 @@ public class UseAccessAspect {
 	 */
 	@Before("execution(* com.cdp.springAop.spring.aop..*.*(..))")
 	public void before3(JoinPoint jp) {
-		log.info("Check if user has access");
+		log.info("Check if user has access2");
 		log.info("Allow access {}", jp);
 	}
 }

@@ -11,6 +11,7 @@ public class Business {
 	BusinessDao dao;
 
 	public String calData() {
+		dao.getData3();
 		return dao.getData();
 
 	}
